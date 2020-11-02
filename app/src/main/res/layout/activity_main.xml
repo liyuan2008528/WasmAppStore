@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.MainActivity">
+
+
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:id="@+id/tv1"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        android:textStyle="bold"
+        android:textSize="20dp"
+         />
+
+    <LinearLayout
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/bt1"
+            android:textSize="11sp"
+            android:text="请求TA列表"
+            android:layout_width="100dp"
+            android:layout_height="50dp"/>
+
+        <Button
+            android:layout_marginLeft="10dp"
+            android:id="@+id/bt2"
+            android:textSize="11sp"
+            android:text="TLV传参"
+            android:layout_width="120dp"
+            android:layout_height="50dp"/>
+
+        <Button
+            android:layout_marginLeft="10dp"
+            android:id="@+id/bt3"
+            android:text="调用TA"
+            android:textSize="11sp"
+            android:layout_width="100dp"
+            android:layout_height="50dp"/>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_show_app"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" />
+
+
+
+
+
+
+
+</LinearLayout>

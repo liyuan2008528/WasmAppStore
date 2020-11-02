@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConfigInfo>
+    <TA_Basic_Info>
+        <service_name>agentTee</service_name>
+        <uuid>98263abc-4138-4b59-9fe9-3c263c6e4e8b</uuid>
+    </TA_Basic_Info>
+    <TA_Manifest_Info>
+        <instance_keep_alive>false</instance_keep_alive>
+        <stack_size>2048</stack_size>
+        <heap_size>16384</heap_size>
+        <multi_command>false</multi_command>
+        <multi_session>false</multi_session>
+        <single_instance>true</single_instance>
+    </TA_Manifest_Info>
+    <TA_Control_Info>
+        <RPMB_Info>
+            <RPMB_size>0</RPMB_size>
+            <RPMB_Permission>
+                <RPMB_general>false</RPMB_general>
+            </RPMB_Permission>
+        </RPMB_Info>
+        <SE_Info>
+            <SE_open_session>false</SE_open_session>
+        </SE_Info>
+        <TUI_Info>
+            <TUI_general>false</TUI_general>
+        </TUI_Info>
+        <DEBUG_Info>
+            <debug_status>false</debug_status>
+            <DEBUG_device_id>817226A8E4CDF80486940C7180CB8E326883630FD7235FF87A9BEB2C6E982297</DEBUG_device_id>
+        </DEBUG_Info>
+    </TA_Control_Info>
+</ConfigInfo>

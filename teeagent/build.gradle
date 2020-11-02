@@ -1,0 +1,68 @@
+apply plugin: 'com.android.library'
+
+android {
+
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs/arm64-v8a']
+        }
+    }
+    signingConfigs {
+        config {
+            keyAlias 'demo_key'
+            keyPassword '000000'
+            storeFile file('mykeystore')
+            storePassword '000000'
+        }
+    }
+
+
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+
+    defaultConfig {
+        externalNativeBuild {
+            cmake{
+                cppFlags ""
+                abiFilters 'arm64-v8a'
+            }
+        }
+
+
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.config
+        }
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'org.xutils:xutils:3.9.0'
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation files('libs/bcpg-jdk15on-1.60.jar')
+    implementation files('libs/bcpkix-jdk15on-1.60.jar')
+    implementation files('libs/bcprov-jdk15on-1.60.jar')
+    implementation 'com.payneteasy:ber-tlv:1.0-10'
+}
