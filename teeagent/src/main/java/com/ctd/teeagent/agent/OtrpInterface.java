@@ -8,5 +8,11 @@ public interface OtrpInterface {
 
     void getTaListBySp(OtrpAgent.OtrpRequestCallback otrpRequestCallback);
 
-    void getDeviceState();
+    void getTeeDeviceStateRequest();
+
+    String getTeeDeviceStateResponse(String deviceStateRequest);
+
+    void getTeeSDList(String deviceStateResponse, OtrpAgent.OtrpRequestCallback otrpRequestCallback);
+
+    void getCreateSDRequest(String deviceStateResponse);
 }

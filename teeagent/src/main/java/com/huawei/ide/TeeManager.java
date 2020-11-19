@@ -1,6 +1,7 @@
 package com.huawei.ide;
 
 import android.app.Activity;
+import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
@@ -32,19 +33,23 @@ public class TeeManager {
     public TeeManager() {
     }
 
-    public static TeeManager getInstance(Activity activity) {
+    public static TeeManager getInstance() {
         if (teeManager == null) {
             teeManager = new TeeManager();
         }
-        applicationContext = activity.getApplicationContext();
-        x.Ext.init(activity.getApplication());
-        x.Ext.setDebug(BuildConfig.DEBUG); // 是否输出debug日志, 开启debug会影响性能.
-
-
-        initDB();
-
 
         return teeManager;
+    }
+
+
+
+
+
+    public void initX(Application application){
+        applicationContext = application.getApplicationContext();
+        x.Ext.init(application);
+        x.Ext.setDebug(BuildConfig.DEBUG); // 是否输出debug日志, 开启debug会影响性能.
+        initDB();
     }
 
     private static void initDB() {
@@ -144,6 +149,26 @@ public class TeeManager {
 
 
         return tee.Run(TAPath, wasm, bytesCommond);
+    }
+
+
+    public String getTeeResponse(String json) {
+        copyAssetsFile2Phone(applicationContext, secFileName);
+        String TAPath = applicationContext.getFilesDir().getAbsolutePath();
+        TAPath += ("/" + secFileName);
+        Tee tee = new Tee();
+        String commond = "";
+        byte[] bytesCommond = new BerTlvBuilder()
+                .addHex(new BerTag(0x3C), "00000110AA0002bbcc")
+//                .addHex(new BerTag(0x3d), HexUtil.toHexString(bytes))
+                .buildArray();
+
+        Log.d("16进制", HexUtil.toHexString(bytesCommond));
+
+        commond = HexUtil.toHexString(bytesCommond);
+
+
+        return tee.Run1(TAPath,json);
     }
 
 

@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 /**
- * CA鉴权
+ * AgentCommon
  */
 public class ACBean {
 

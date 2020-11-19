@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemChildClickListener;
-import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.ctd.teeagent.agent.OtrpAgent;
 import com.ctd.teeagent.model.WasmTaBean;
 import com.ctd.wasmappstore.R;
@@ -49,9 +48,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-         otrpAgent = new OtrpAgent();
+        otrpAgent = new OtrpAgent();
 
-        final TeeManager teeManager = TeeManager.getInstance(MainActivity.this);
+        final TeeManager teeManager = TeeManager.getInstance();
+//        teeManager.initX(this);
 
 //        String taResult = teeManager.getTaResult();
 //        tv1.setText(taResult);
@@ -72,9 +72,14 @@ public class MainActivity extends AppCompatActivity {
                 otrpAgent.getTaListBySp(new OtrpAgent.OtrpRequestCallback() {
                     @Override
                     public void otrpRequestSuccess(List<WasmTaBean> wasmTaBeans) {
-                        list.clear();
-                        list.addAll(wasmTaBeans);
-                        allTaAdapter.notifyDataSetChanged();
+//                        list.clear();
+//                        list.addAll(wasmTaBeans);
+//                        allTaAdapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void getSdListSuccess(String sdList) {
+
                     }
                 });
 
@@ -86,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //                OtrpAgent.getGetHttp1(teeManager,tv1);
-                otrpAgent.getDeviceState();
+                otrpAgent.getTeeDeviceStateRequest();
 //                tv1.setText(taResult);
 
             }
